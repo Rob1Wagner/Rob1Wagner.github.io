@@ -1,3 +1,6 @@
+/**
+ * Data Informations of game
+ */
 export interface Game {
     id: number,
     title: string,

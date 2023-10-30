@@ -1,4 +1,5 @@
 import { Component, Input} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Game } from '../interface/game';
@@ -8,7 +9,7 @@ import { Game } from '../interface/game';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   standalone: true,
-  imports: [MatCardModule, MatButtonModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule],
 })
 export class CardComponent {
 
