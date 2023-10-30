@@ -1,14 +1,13 @@
-<mat-card class="example-card">
+<mat-card class="card-properties">
     <mat-card-header>
-      <mat-card-title>{{title}}</mat-card-title>
-      <mat-card-subtitle>{{tags}}</mat-card-subtitle>
-      <mat-card-subtitle>{{warntags}}</mat-card-subtitle>
+      <mat-card-title class="title">{{game.title}}</mat-card-title>
+      <mat-card-subtitle>{{game.tags}} {{game.warntags}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>{{description}}</p>
+      <p>{{game.description}}</p>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
+    <mat-card-actions class="position-absolute bottom-0 end-0">
+      <button mat-button (click)="toggleLikes()">LIKE {{game.nbLikes}}</button>
     </mat-card-actions>
 </mat-card>
   
