@@ -1,7 +1,8 @@
 <mat-card class="card-properties">
     <mat-card-header>
       <mat-card-title class="title">{{game.title}}</mat-card-title>
-      <mat-card-subtitle>{{game.tags}} {{game.warntags}}</mat-card-subtitle>
+      <!--<mat-card-subtitle>{{game.tags}} {{game.warntags}}</mat-card-subtitle>-->
+      <mat-card-subtitle><app-tag [tags]="game.tags" [warntags]="game.warntags"></app-tag></mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <p>{{game.description}}</p>

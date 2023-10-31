@@ -1,5 +1,5 @@
 /**
- * Data Informations of game
+ * Data Informations of a game
  */
 export interface Game {
     id: number,
