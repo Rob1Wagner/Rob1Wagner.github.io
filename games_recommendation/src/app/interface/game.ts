@@ -9,4 +9,5 @@ export interface Game {
     description: string,
     nbLikes: number,
     isAlreadyLiked: boolean,
+    gameCode: string;
 }
