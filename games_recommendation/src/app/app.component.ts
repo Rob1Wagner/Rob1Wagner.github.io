@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Game } from './interface/game';
-import { GameService } from './game.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { GameService } from './service/game.service';
 
 @Component({
   selector: 'app-root',
@@ -10,24 +8,16 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 
-  // Mock données des cartes
-  public games: Game[] | undefined;
-
   constructor(private gameService: GameService){}
 
   ngOnInit(): void {
-      this.getGames();
+      this.gameService.getGames();
   }
 
-  public getGames(): void {
-    this.gameService.getGames().subscribe(
-      (response: Game[]) => {
-        this.games = response;
-      },
-      (error: HttpErrorResponse)=> {
-        alert(error.message);
-      }
-    );
+  /**
+   * Getter of games
+   */
+  public get games(){
+    return this.gameService.games;
   }
-  
 }
