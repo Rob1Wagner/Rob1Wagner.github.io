@@ -1,4 +1,8 @@
-<div class="d-flex flex-row flex-wrap gap justify-content-center">
+<mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color" class="d-flex flex-row toolbar-properties">
+  <mat-button-toggle value="accueil">Accueil</mat-button-toggle>
+  <mat-button-toggle value="ajout_jeu">Ajouter un nouveau jeu</mat-button-toggle>
+</mat-button-toggle-group>
+<div class="d-flex flex-row flex-wrap gap justify-content-around">
   <div *ngFor="let game of games">
     <app-card [game]="game"></app-card>
   </div>
