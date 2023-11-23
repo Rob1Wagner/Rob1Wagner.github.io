@@ -67,10 +67,10 @@ public class GameResource {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping(value = "pageable")
+    @GetMapping("/pageable/{pageNumber}")
     public ResponseEntity<?> getGamesPageable(
-        @RequestParam(defaultValue = "0") final Integer pageNumber,
-        @RequestParam(defaultValue = "5") final Integer size
+        @PathVariable("pageNumber") final Integer pageNumber,
+        @RequestParam(defaultValue = "2") final Integer size
     ) {
         return ResponseEntity.ok(convertToResponse(gameRepository.getGames(PageRequest.of(pageNumber, size))));
     }
@@ -78,9 +78,9 @@ public class GameResource {
     private Map<String, Object> convertToResponse(final Page<Game> pageGames) {
         Map<String, Object> response = new HashMap<>();
         response.put("games", pageGames.getContent());
-        response.put("current-page", pageGames.getNumber());
-        response.put("total-items", pageGames.getTotalElements());
-        response.put("total-pages", pageGames.getTotalPages());
+        response.put("currentPage", pageGames.getNumber());
+        response.put("totalItems", pageGames.getTotalElements());
+        response.put("totalPages", pageGames.getTotalPages());
         return response;
     }
 }

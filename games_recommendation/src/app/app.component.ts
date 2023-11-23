@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   constructor(private gameService: GameService){}
 
   ngOnInit(): void {
-      this.gameService.getGames();
+      this.gameService.changePageGames(0);
   }
 
   /**
@@ -19,5 +19,9 @@ export class AppComponent implements OnInit {
    */
   public get games(){
     return this.gameService.games;
+  }
+
+  public changePage(page: number){
+    this.gameService.changePageGames(page);
   }
 }

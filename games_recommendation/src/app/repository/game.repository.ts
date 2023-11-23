@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Game } from '../interface/game';
 import { environment } from 'src/environments/environment';
+import { Pagination } from '../interface/pagination';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,14 @@ export class GameRepository {
 
     public getGames(): Observable<Game[]> {
       return this.http.get<Game[]>(`${this.apiServerUrl}/game/all`);
+    }
+
+    public getPageableGames(): Observable<Pagination> {
+      return this.http.get<Pagination>(`${this.apiServerUrl}/game/pageable`);
+    }
+
+    public getPageableGamesByPage(page: number): Observable<Pagination> {
+      return this.http.get<Pagination>(`${this.apiServerUrl}/game/pageable/${page}`);
     }
 
     public addGame(game: Game): Observable<Game> {
