@@ -1,7 +1,11 @@
 package com.example.demo;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,9 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Game;
+import com.example.demo.repository.GameRepo;
 import com.example.demo.service.GameService;
 
 import jakarta.transaction.Transactional;
@@ -22,9 +28,11 @@ import jakarta.transaction.Transactional;
 @RequestMapping("/game")
 public class GameResource {
     private final GameService gameService;
+    private final GameRepo gameRepository;
 
-    public GameResource(GameService gameService) {
+    public GameResource(GameService gameService, GameRepo gameRepository) {
         this.gameService = gameService;
+        this.gameRepository = gameRepository;
     }
 
     @GetMapping("/all")
@@ -57,5 +65,22 @@ public class GameResource {
     public ResponseEntity<?> deleteGame(@PathVariable("id") Long id){
         gameService.deleteGame(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "pageable")
+    public ResponseEntity<?> getGamesPageable(
+        @RequestParam(defaultValue = "0") final Integer pageNumber,
+        @RequestParam(defaultValue = "5") final Integer size
+    ) {
+        return ResponseEntity.ok(convertToResponse(gameRepository.getGames(PageRequest.of(pageNumber, size))));
+    }
+
+    private Map<String, Object> convertToResponse(final Page<Game> pageGames) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("games", pageGames.getContent());
+        response.put("current-page", pageGames.getNumber());
+        response.put("total-items", pageGames.getTotalElements());
+        response.put("total-pages", pageGames.getTotalPages());
+        return response;
     }
 }
