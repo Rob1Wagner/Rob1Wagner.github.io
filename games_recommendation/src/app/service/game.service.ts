@@ -9,15 +9,19 @@ import { Pagination } from '../interface/pagination';
 })
 export class GameService {
 
-  public games!: Game[];
-  public elemsPages! : Pagination;
+  public elemsPages : Pagination = {
+    totalItems: 0,
+    games: [],
+    currentPage: 0,
+    totalPages: 0
+  }
 
   constructor(private gameRepository: GameRepository){}
   
   public getGames(): void {
     this.gameRepository.getGames().subscribe(
       (response: Game[]) => {
-        this.games = response;
+        this.elemsPages.games = response;
       },
       (error: HttpErrorResponse)=> {
         alert(error.message);
@@ -28,7 +32,7 @@ export class GameService {
   public getPageableGames(): void {
     this.gameRepository.getPageableGames().subscribe(
       (response: Pagination) => {
-        this.games = response.games;
+        this.elemsPages = response;
       },
       (error: HttpErrorResponse)=> {
         alert(error.message);
@@ -40,7 +44,6 @@ export class GameService {
     this.gameRepository.getPageableGamesByPage(page).subscribe(
       (response: Pagination) => {
         this.elemsPages = response;
-        this.games = response.games;
       },
       (error: HttpErrorResponse)=> {
         alert(error.message);

@@ -17,11 +17,11 @@ export class AppComponent implements OnInit {
   /**
    * Getter of games
    */
-  public get games(){
-    return this.gameService.games;
+  public get elemsPage(){
+    return this.gameService.elemsPages;
   }
 
   public changePage(page: number){
-    this.gameService.changePageGames(page);
+    if(page !== this.elemsPage.currentPage && page >= 0 && page < this.elemsPage.totalPages) this.gameService.changePageGames(page);
   }
 }
