@@ -1,3 +1,6 @@
+/**
+ * Data Informations of a game
+ */
 export interface Game {
     id: number,
     title: string,
@@ -6,4 +9,5 @@ export interface Game {
     description: string,
     nbLikes: number,
     isAlreadyLiked: boolean,
+    gameCode: string;
 }
