@@ -21,7 +21,7 @@ jobs:
     environment: ARA-develop
     defaults:
       run:
-        working-directory: ./
+        working-directory: ./games_recommendation
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: 18
           cache: npm 
-          cache-dependency-path: ./package-lock.json
+          cache-dependency-path: ./games_recommendation/package-lock.json
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Install dependencies
@@ -42,7 +42,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./dist
+          path: ./games_recommendation/dist
   deploy:
     environment:
       name: github-pages
