@@ -1,11 +1,10 @@
-<mat-card class="card-properties">
+<mat-card class="card-properties" (click)="openDialog()" #statusRef>
     <mat-card-header>
       <mat-card-title class="title">{{game.title}}</mat-card-title>
-      <!--<mat-card-subtitle>{{game.tags}} {{game.warntags}}</mat-card-subtitle>-->
-      <mat-card-subtitle><app-tag [tags]="game.tags" [warntags]="game.warntags"></app-tag></mat-card-subtitle>
+      <mat-card-subtitle class="container-properties"><app-tag [tags]="game.tags" [warntags]="game.warntags"></app-tag></mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>{{game.description}}</p>
+      <p>{{game.description | slice:0:100}}...</p>
     </mat-card-content>
     <mat-card-actions class="position-absolute bottom-0 end-0">
       <input mat-button *ngIf="game.isAlreadyLiked else isNotLiked" type="image" src="../../assets/fill-like.png" class="size-button-like" (click)="toggleLikes()"/>

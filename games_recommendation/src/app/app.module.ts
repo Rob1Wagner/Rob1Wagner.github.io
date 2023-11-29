@@ -10,14 +10,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ZoomCardComponent } from './zoom-card/zoom-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
+    ZoomCardComponent,
     TagComponent,
   ],
   imports: [
@@ -31,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatChipsModule,
     MatToolbarModule,
     MatButtonToggleModule,
+    MatDialogModule,
     HttpClientModule
   ],
   providers: [],
