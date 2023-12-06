@@ -1,5 +1,5 @@
 <mat-chip-listbox aria-label="Tags selection">
-    <mat-chip *ngFor="let tag of tags" class="tag-properties">{{this.tag}}</mat-chip>
-    <mat-chip *ngFor="let warntag of warntags" class="warntag-properties">{{this.warntag}}</mat-chip>
+    <mat-chip-option *ngFor="let tag of tags" class="tag-properties" (click)="addNewTag(tag)">{{this.tag}}</mat-chip-option>
+    <mat-chip-option *ngFor="let warntag of warntags" class="warntag-properties" (click)="addNewWarntag(warntag)">{{this.warntag}}</mat-chip-option>
 </mat-chip-listbox>
 

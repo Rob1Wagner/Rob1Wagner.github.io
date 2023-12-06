@@ -1,6 +1,6 @@
-<mat-card class="card-properties" (click)="openDialog()" #statusRef>
+<mat-card class="card-properties" #statusRef>
     <mat-card-header>
-      <mat-card-title class="title">{{game.title}}</mat-card-title>
+      <mat-card-title class="title" (click)="openDialog()">{{game.title}}</mat-card-title>
       <mat-card-subtitle class="container-properties"><app-tag [tags]="game.tags" [warntags]="game.warntags"></app-tag></mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>

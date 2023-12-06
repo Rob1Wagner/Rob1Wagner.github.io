@@ -1,0 +1,12 @@
+<div class="d-flex flex-row flex-wrap gap justify-content-around">
+  <div *ngFor="let game of elemsPage.games">
+    <app-card [game]="game"></app-card>
+  </div>
+</div>
+<nav aria-label="Page navigation example" class="position-absolute bottom-0">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#" (click)="changePage(elemsPage.currentPage - 1)">Previous</a></li>
+    <li class="page-item" *ngFor="let page of [].constructor(elemsPage.totalPages); let i = index"><a class="page-link" href="#" (click)="changePage(i)">{{i + 1}}</a></li>
+    <li class="page-item"><a class="page-link" href="#" (click)="changePage(elemsPage.currentPage + 1)">Next</a></li>
+  </ul>
+</nav>

@@ -25,7 +25,7 @@ export class GameRepository {
       return this.http.get<Pagination>(`${this.apiServerUrl}/game/pageable/${page}`);
     }
 
-    public addGame(game: Game): Observable<Game> {
+    public addGame(game: Partial<Game>): Observable<Game> {
       return this.http.post<Game>(`${this.apiServerUrl}/game/add`, game);
     }
 

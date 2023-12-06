@@ -15,13 +15,24 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ZoomCardComponent } from './zoom-card/zoom-card.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { FormNewGameComponent } from './form-new-game/form-new-game.component';
+import { Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+const routes: Routes = [
+  { path: 'accueil-component', component: AccueilComponent },
+  { path: 'formnewgame-component', component: FormNewGameComponent },
+];
 
 @NgModule({
   declarations: [
+    AccueilComponent,
     AppComponent,
     CardComponent,
     ZoomCardComponent,
     TagComponent,
+    FormNewGameComponent,
   ],
   imports: [
     CommonModule,
@@ -35,7 +46,9 @@ import { ZoomCardComponent } from './zoom-card/zoom-card.component';
     MatToolbarModule,
     MatButtonToggleModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

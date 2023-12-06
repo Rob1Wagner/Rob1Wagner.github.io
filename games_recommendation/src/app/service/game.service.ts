@@ -50,4 +50,15 @@ export class GameService {
       }
     );
   }
+
+  public addGame(game: Partial<Game>): void {
+    this.gameRepository.addGame(game).subscribe(
+      (response: Game)=>{
+        console.log(response.title + "ajouté");
+      },
+      (error: HttpErrorResponse)=> {
+        alert(error.message);
+      }
+    );
+  }
 }
