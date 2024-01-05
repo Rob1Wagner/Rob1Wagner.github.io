@@ -35,12 +35,15 @@ public class GameService {
     }
 
     public void deleteGame(Long id) {
-        System.out.println(id);
         try {
             gameRepo.deleteGameById(id);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
     }
+
+    // public void sortGameAlphabetly(String field) {
+    //     this.gameRepo.sortGameAlphabetly(Sort.by(Sort.Direction.DESC,field));
+    // }
 }
+

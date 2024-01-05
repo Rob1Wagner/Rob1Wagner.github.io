@@ -2,6 +2,13 @@
     gap: 30px;
 }
 
-.form-control{
-    padding: 4%;
+.textarea-properties{
+    padding: 10%;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched
+{
+    border: 1.5px solid red; 
+    border-radius: 3%;
 }

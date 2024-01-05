@@ -14,11 +14,12 @@ export class FormNewGameComponent {
   constructor(private fb: FormBuilder, private gameService: GameService){}
 
   gameForm = this.fb.group({
-    title : new FormControl('', [Validators.required, Validators.maxLength(10)]),
-    description: new FormControl('', [Validators.required, Validators.maxLength(500)]),
+    title : new FormControl('', [Validators.required, Validators.maxLength(15)]),
+    description: new FormControl('', [Validators.required, Validators.maxLength(400)]),
     tags: this.fb.array<string[]>([]),
     warntags: this.fb.array<string[]>([]),
   })
+  
   
   get tags(){
     return this.gameForm.controls["tags"] as FormArray;
@@ -29,7 +30,11 @@ export class FormNewGameComponent {
   }
 
   addNewTag(tag: string){
-    this.tags.push(new FormControl(tag));
+    if(this.tags.value.includes(tag)) {
+      let index: number = this.tags.value.findIndex((value: string) => value === tag);
+      this.tags.removeAt(index);
+    }
+    else this.tags.push(new FormControl(tag));
   }
 
   addNewWarntag(warntag: string){
@@ -49,7 +54,6 @@ export class FormNewGameComponent {
       nbLikes: 0,
       isAlreadyLiked: false,
     } 
-    console.log(gameValue);
     this.gameService.addGame(gameValue);
   }
 }

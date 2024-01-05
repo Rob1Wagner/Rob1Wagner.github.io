@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Game } from '../interface/game';
 import { ZoomCardComponent } from '../zoom-card/zoom-card.component';
 
@@ -19,12 +19,12 @@ export class CardComponent {
    * When like's button is clicked, add or substray the like depending of this state and toggle this state
    */
   toggleLikes(){
-    this.game.isAlreadyLiked ? this.game.nbLikes-- : this.game.nbLikes++ ;  
+    this.game.isAlreadyLiked ? this.game.nbLikes-- : this.game.nbLikes++;  
     this.game.isAlreadyLiked = !this.game.isAlreadyLiked;
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ZoomCardComponent, {
+   this.dialog.open(ZoomCardComponent, {
       height: '600px',
       width: '1500rem',
       data: {game: this.game}

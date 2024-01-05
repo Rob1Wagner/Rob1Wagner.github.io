@@ -30,6 +30,14 @@ public class GameResource {
     private final GameService gameService;
     private final GameRepo gameRepository;
 
+    // @Getter
+    // @AllArgsConstructor
+    // public enum SortField {
+    //     ID("id"),
+    //     TITLE("title"),
+    //     NBlIKES("nbLikes")
+    // }
+
     public GameResource(GameService gameService, GameRepo gameRepository) {
         this.gameService = gameService;
         this.gameRepository = gameRepository;
@@ -42,7 +50,7 @@ public class GameResource {
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Game> getGameById (@PathVariable("id") Long id) {
+    public ResponseEntity<Game> getGameById (@PathVariable Long id) {
         Game game = gameService.findGameById(id);
         return new ResponseEntity<>(game, HttpStatus.OK);
     }
@@ -62,14 +70,14 @@ public class GameResource {
 
     @Transactional
     @DeleteMapping("/delete/{id}") 
-    public ResponseEntity<?> deleteGame(@PathVariable("id") Long id){
+    public ResponseEntity<Map<String, Object>> deleteGame(@PathVariable Long id){
         gameService.deleteGame(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/pageable/{pageNumber}")
-    public ResponseEntity<?> getGamesPageable(
-        @PathVariable("pageNumber") final Integer pageNumber,
+    public ResponseEntity<Map<String, Object>> getGamesPageable(
+        @PathVariable final Integer pageNumber,
         @RequestParam(defaultValue = "2") final Integer size
     ) {
         return ResponseEntity.ok(convertToResponse(gameRepository.getGames(PageRequest.of(pageNumber, size))));
@@ -84,3 +92,4 @@ public class GameResource {
         return response;
     }
 }
+

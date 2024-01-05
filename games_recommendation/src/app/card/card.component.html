@@ -7,8 +7,8 @@
       <p>{{game.description | slice:0:100}}...</p>
     </mat-card-content>
     <mat-card-actions class="position-absolute bottom-0 end-0">
-      <input mat-button *ngIf="game.isAlreadyLiked else isNotLiked" type="image" src="../../assets/fill-like.png" class="size-button-like" (click)="toggleLikes()"/>
-      <ng-template #isNotLiked><input mat-button type="image" src="../../assets/empty-like.png" class="size-button-like" (click)="toggleLikes()"/></ng-template>
+      <input mat-button alt = "like" *ngIf="game.isAlreadyLiked else isNotLiked" type="image" src="../../assets/fill-like.png" class="size-button-like" (click)="toggleLikes()"/>
+      <ng-template #isNotLiked><input mat-button alt="like" type="image" src="../../assets/empty-like.png" class="size-button-like" (click)="toggleLikes()"/></ng-template>
       <span>{{game.nbLikes}}</span>
     </mat-card-actions>
 </mat-card>

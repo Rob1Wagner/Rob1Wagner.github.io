@@ -18,4 +18,5 @@ public interface GameRepo extends JpaRepository<Game, Long> {
     @Query(value = "SELECT g FROM Game g ")
     Page<Game> getGames(final Pageable pageable);
 
+    // void sortGameAlphabetly(Sort sort);
 }
